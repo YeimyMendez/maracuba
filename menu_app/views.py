@@ -7,7 +7,6 @@ def pdf_view(request):
     if fs.exists(filename):
         with fs.open(filename) as pdf:
             response = HttpResponse(pdf, content_type='application/pdf')
-            #response['Content-Disposition'] = 'attachment; filename="mypdf.pdf"' #user will be prompted with the browser’s open/save file
             response['Content-Disposition'] = 'inline; filename="archivo.pdf"' #user will be prompted display the PDF in the browser
             return response
     else:

@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'PyPDF2',
     'gunicorn',
     'psycopg2',
-    
 ]
 
 MIDDLEWARE = [
