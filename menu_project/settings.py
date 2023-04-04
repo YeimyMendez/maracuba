@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-zrd1^mnhls3!lp*)wop_lq8m)3=bab_11k&)(c=p$7tef_5f00
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+
+# HEROKU
+ALLOWED_HOSTS = ['maracuba.herokuapp.com']
 
 
 # Application definition
@@ -40,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'menu_app',
     'PyPDF2',
+    'gunicorn',
 ]
 
 MIDDLEWARE = [
@@ -76,10 +80,23 @@ WSGI_APPLICATION = 'menu_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+#HEROKU
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd385mckb6bkqtf',
+        'USER': 'apvxhjixpnwjgh',
+        'PASSWORD': '9f8cc68ab02652441a90cc633320d224a901f16831b0a41b1c085e842b33495c',
+        'HOST': 'ec2-34-236-103-63.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -121,9 +138,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 #ESTATIC PRUEBA LOCAL
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'menu_app/static'),)
+# STATIC_ROOT = '/menu_app/static'
+
+# HEROKU
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'menu_app/static'),)
-STATIC_ROOT = '/menu_app/static'
+STATIC_ROOT = "static"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
