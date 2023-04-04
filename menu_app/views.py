@@ -7,7 +7,7 @@ def pdf_view(request):
     if fs.exists(filename):
         with fs.open(filename) as pdf:
             response = HttpResponse(pdf, content_type='application/pdf')
-            response['Content-Disposition'] = 'inline; filename="archivo.pdf"' #user will be prompted display the PDF in the browser
+            response['Content-Disposition'] = 'inline; filename="archivo.pdf"'
             return response
     else:
-        return HttpResponseNotFound('The requested pdf was not found in our server.')
+        return HttpResponseNotFound('No se encuentra el archivo PDF.')
